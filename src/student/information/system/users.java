@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -70,7 +71,7 @@ int q;
    
     
     }
-   private void Getadmin() throws SQLException{
+ /*  private void Getadmin() throws SQLException{
        try{
    pst = (PreparedStatement) conn.prepareStatement("select sum(hostel_name) from student where hostel_name=''");
    rs = pst.executeQuery();
@@ -83,7 +84,7 @@ int q;
        catch(Exception e){
            
        }}
-    
+    */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,13 +100,13 @@ int q;
         txt_room = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_names = new javax.swing.JTextField();
         cmd_add = new javax.swing.JButton();
         cmd_update = new javax.swing.JButton();
         cmd_delete = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -118,6 +119,12 @@ int q;
 
         jLabel3.setFont(new java.awt.Font("Rockwell Condensed", 1, 18)); // NOI18N
         jLabel3.setText("Student Number");
+
+        txt_room.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_roomActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Rockwell Condensed", 1, 18)); // NOI18N
         jLabel2.setText("Room Number");
@@ -164,6 +171,9 @@ int q;
         jLabel4.setFont(new java.awt.Font("Rockwell Condensed", 1, 18)); // NOI18N
         jLabel4.setText("ID");
 
+        jComboBox1.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select...", "Bengahz", "Kamborge", "Viette", "Titanic" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -184,10 +194,10 @@ int q;
                                 .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_names, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addComponent(txt_st, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addComponent(txt_room)
-                    .addComponent(txt_id))
+                    .addComponent(txt_id)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(99, Short.MAX_VALUE)
@@ -214,17 +224,18 @@ int q;
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txt_id)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_names, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_room, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(24, 24, 24)
                         .addComponent(txt_st, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(64, 64, 64)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -256,9 +267,14 @@ int q;
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Names", "Room_numbers", "Student_no"
+                "ID", "Names", "Room_numbers", "Number_of_student"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -308,7 +324,7 @@ int q;
             pst.setString(1, txt_id.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Record Deleted");
-            
+            display();
             
         }catch(Exception e){
             
@@ -330,7 +346,7 @@ int q;
     }//GEN-LAST:event_cmd_deleteActionPerformed
 
     private void cmd_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_updateActionPerformed
-       if(txt_id.getText().isEmpty() ||txt_names.getText().isEmpty() ||txt_room.getText().isEmpty() || txt_st.getText().isEmpty()){
+       if(txt_id.getText().isEmpty() ||txt_room.getText().isEmpty() || txt_st.getText().isEmpty()){
             
             JOptionPane.showMessageDialog(this,"Missing Information");
         }
@@ -338,17 +354,18 @@ int q;
      try{
 
    String value1=txt_id.getText();
-   String value2=txt_names.getText();
+   String value2=(String) jComboBox1.getSelectedItem();
    String value3=txt_room.getText();
    String value4=txt_st.getText();
  
 
-   String sql="Update hostel set  names='"+value2+"', room_no='"+value3+"', st_no='"+value4+"' where id='"+value1+"'";
+   String sql="update hostel set  names='"+value2+"', room_no='"+value3+"', st_no='"+value4+"' where id='"+value1+"'";
 
    pst=conn.prepareStatement(sql);
 
    pst.execute();
    JOptionPane.showMessageDialog(null,"Data Updated");  
+   display();
  }
 
   catch(SQLException e){
@@ -361,12 +378,12 @@ int q;
         // TODO add your handling code here:
         txt_room.setText("");
         txt_st.setText("");
-        txt_names.setText("");
+        jComboBox1.setSelectedItem("");
         //txt_id.setText("");       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmd_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_addActionPerformed
-   if(txt_id.getText().isEmpty() ||txt_names.getText().isEmpty() ||txt_room.getText().isEmpty() || txt_st.getText().isEmpty()){
+   if(txt_room.getText().isEmpty() || txt_st.getText().isEmpty()){
             
             JOptionPane.showMessageDialog(this,"please fill empty fields");
    }else{
@@ -378,12 +395,12 @@ int q;
             String sql ="insert into hostel  values (null,?,?,?) ";
 
             pst=conn.prepareStatement(sql);
-            pst.setString(1,txt_names.getText());
+            pst.setString(1,(String)jComboBox1.getSelectedItem());
             pst.setString(2,txt_room.getText());
             pst.setString(3,txt_st.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Data is saved successfully");
-
+            display();
         }
         catch (Exception e)
 
@@ -406,11 +423,27 @@ int q;
     }//GEN-LAST:event_cmd_addActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       //link room page to mainMenupage
         MainMenu h= new MainMenu();
          h.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        //display data into form//
+        int selectedRow =jTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        txt_id.setText(model.getValueAt(selectedRow, 0).toString());
+       jComboBox1.setSelectedItem(model.getValueAt(selectedRow, 1).toString());
+        txt_room.setText(model.getValueAt(selectedRow, 2).toString());
+       txt_st.setText(model.getValueAt(selectedRow,3 ).toString());
+           
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txt_roomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_roomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_roomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,6 +493,7 @@ int q;
     private javax.swing.JButton cmd_update;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -469,7 +503,6 @@ int q;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_names;
     private javax.swing.JTextField txt_room;
     private javax.swing.JTextField txt_st;
     // End of variables declaration//GEN-END:variables

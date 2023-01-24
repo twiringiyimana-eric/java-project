@@ -109,9 +109,9 @@ public class admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTextField8 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
@@ -141,7 +141,8 @@ public class admin extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         dob = new com.toedter.calendar.JDateChooser();
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -160,15 +161,7 @@ public class admin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Search"));
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -188,8 +181,7 @@ public class admin extends javax.swing.JFrame {
         );
 
         jButton9.setBackground(new java.awt.Color(200, 213, 0));
-        jButton9.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
-        jButton9.setText("Back");
+        jButton9.setText("<<Back");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -202,10 +194,14 @@ public class admin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton9)
-                .addGap(9, 9, 9))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addGap(3, 3, 3)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,51 +213,42 @@ public class admin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(526, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RECORD INFORMATION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Rockwell Condensed", 1, 24))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel11.setText("ID");
 
-        jLabel12.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel12.setText("First_Name");
 
-        jLabel13.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel13.setText("Last_Name");
 
-        jLabel14.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel14.setText("Dob");
 
-        jLabel15.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel15.setText("Gender");
 
         gender.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select...", "Male", "Female" }));
 
-        jLabel16.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel16.setText("Email");
 
-        jLabel17.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel17.setText("Telephone");
 
-        jLabel18.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel18.setText("Disability");
 
         disability.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         disability.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select..", "Yes", "No" }));
 
-        jLabel19.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel19.setText("Hostel_Name");
 
         hostel.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         hostel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select...", "Bengahz", "Kamborge", "Viette", "Titanic" }));
 
-        jLabel20.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jLabel20.setText("Department");
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\hostels_Information_System\\src\\student\\information\\system\\images\\Save-icon.png")); // NOI18N
         jButton5.setText("Save");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,7 +256,6 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\hostels_Information_System\\src\\student\\information\\system\\images\\update icon.png")); // NOI18N
         jButton6.setText("Update");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +263,6 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\hostels_Information_System\\src\\student\\information\\system\\images\\delete_16x16.gif")); // NOI18N
         jButton7.setText("Delete");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,15 +270,12 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\hostels_Information_System\\src\\student\\information\\system\\images\\erase-128.png")); // NOI18N
         jButton8.setText("Cancel");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-
-        dob.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -311,12 +293,11 @@ public class admin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton8)
-                                .addGap(12, 12, 12))
+                                .addComponent(jButton7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton8))
                             .addComponent(txt_department)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,13 +321,15 @@ public class admin extends javax.swing.JFrame {
                                     .addGap(11, 11, 11))))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_phone)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_fname)
-                                .addComponent(txt_id)
-                                .addComponent(txt_lname)
-                                .addComponent(dob, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                                .addComponent(txt_email))
-                            .addComponent(gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_fname)
+                                    .addComponent(txt_id)
+                                    .addComponent(txt_lname)
+                                    .addComponent(gender, 0, 236, Short.MAX_VALUE)
+                                    .addComponent(txt_email)
+                                    .addComponent(dob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -531,8 +514,8 @@ else{
                String value9 = (String)hostel.getSelectedItem();
                
 
-                String sql= "update student set id_no='"+value1+"',fname='"+value2+"', lname='"+value3+"', "
-                        + "Dob='"+value4+"',email='"+value6+"',telephone='"+value7+"',disability= '"+value8+"', "
+                String sql= "update Student set id_no='"+value1+"',fname='"+value2+"', lname='"+value3+"', "
+                        + "Dob='"+value4+"',email='"+value6+"',telephone='"+value7+"',department= '"+value10+"', "
                         + "hostel_name='"+value9+"',gender='"+value5+"'"
                         + "where id_no='"+value1+"' ";
 
@@ -598,36 +581,6 @@ else{
         n.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-       //search fields
-       try{
-       String sql ="select * from student where id_no=? ";
-           
-            
-            pst=conn.prepareStatement(sql); 
-            pst.setString(1,jTextField8.getText()); 
-            rs=pst.executeQuery();
-            jTable1.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs)); 
-           
-       
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-        finally {
-            
-            try{
-                
-                rs.close();
-                pst.close();
-
-            }
-            catch(Exception e){
-                
-            }
-         } 
-    }//GEN-LAST:event_jTextField8ActionPerformed
 
     /**
      * @param args the command line arguments

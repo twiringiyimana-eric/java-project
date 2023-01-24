@@ -55,10 +55,10 @@ public class Signup extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
-        txt_division = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         Login = new javax.swing.JButton();
         txt_password = new javax.swing.JPasswordField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         txt_date = new javax.swing.JMenu();
@@ -67,6 +67,8 @@ public class Signup extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Desktop\\hostels_Information_System\\src\\student\\information\\system\\images\\hostel.png")); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CREATE ACCOUNT", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Rockwell Condensed", 1, 18))); // NOI18N
 
@@ -81,7 +83,7 @@ public class Signup extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Documents\\images.png")); // NOI18N
-        jButton1.setText("Signin");
+        jButton1.setText("Signup");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -95,6 +97,9 @@ public class Signup extends javax.swing.JFrame {
                 LoginActionPerformed(evt);
             }
         });
+
+        jComboBox1.setFont(new java.awt.Font("Rockwell Condensed", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select...", "user" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -111,7 +116,7 @@ public class Signup extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                                 .addComponent(Login))
-                            .addComponent(txt_division)))
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,7 +125,7 @@ public class Signup extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_password)
                             .addComponent(txt_username))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,10 +138,13 @@ public class Signup extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_division, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
@@ -215,7 +223,7 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(txt_username.getText().isEmpty()||txt_password.getText().isEmpty()||txt_division.getText().isEmpty()){
+        if(txt_username.getText().isEmpty()||txt_password.getText().isEmpty()){
         JOptionPane.showMessageDialog(this,"Please Fill Empty Fields" );
         }
         else{
@@ -230,10 +238,12 @@ public class Signup extends javax.swing.JFrame {
            // pst.setString(1,txt_id.getText());
             pst.setString(1,txt_username.getText());
             pst.setString(2,txt_password.getText());
-            pst.setString(3,txt_division.getText());
+            pst.setString(3,(String)jComboBox1.getSelectedItem());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Data is saved successfully");
-
+            Login h=new Login();
+            h.setVisible(true);
+            this.dispose();
         }
         catch (Exception e)
 
@@ -297,6 +307,7 @@ public class Signup extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Login;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -306,9 +317,10 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu txt_date;
-    private javax.swing.JTextField txt_division;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JMenu txt_time;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
+
+   
 }
